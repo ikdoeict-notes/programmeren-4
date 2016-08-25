@@ -39,23 +39,23 @@ ExecuteScalar = QUERY uitvoeren en de 1ste COLUMN van de 1ste ROW terugkrijgen
 ===================*/
 
 DataTable table = new DataTable();
-table.Load(rdr, LoadOption.PreserveChanges)
+table.Load(rdr, LoadOption.PreserveChanges);
 
 /* DATA ADAPTER
 ===================*/
 
-SqlDataAdapter daCustomers = new SqlDataAdapter("QUERY", con) // Sluit zelf de connectie af
+SqlDataAdapter daCustomers = new SqlDataAdapter("QUERY", con); // Sluit zelf de connectie af
 
 /* COMMAND BUILDER
 ===================*/
 
-SqlCommandBuilder cmdBldr = new SqlCommandBuilder(daCustomers) // Voegt automatisch een insert, update, deleter query toe aan de adapter
+SqlCommandBuilder cmdBldr = new SqlCommandBuilder(daCustomers); // Voegt automatisch een insert, update, deleter query toe aan de adapter
 
 /* DATA SET
 ====================*/
 
 DataSet dsCustomers = new DataSet();
-daCustomers.Fill(dsCustomers, "TABLE")
+daCustomers.Fill(dsCustomers, "TABLE");
 
 /* DATA GRID
 ===================*/
@@ -69,7 +69,7 @@ dgCustomers.DataMember = "TABLE";
 SqlCommand cmd = new SqlCommand("SELECT * FROM Customers WHERE city = @city", con);
 SqlParameter par = new SqlParameter();
 par.ParameterName = "@city";
-par.Value = INPUT
+par.Value = INPUT;
 cmd.Parameters.Add(par);
 
 /* SPROC COMMAND
